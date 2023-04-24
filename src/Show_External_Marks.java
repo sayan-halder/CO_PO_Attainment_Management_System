@@ -1,0 +1,253 @@
+import java.sql.*;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
+public class Show_External_Marks extends javax.swing.JFrame {
+    MyConnection dbc=new MyConnection();
+    Connection conn=dbc.connectme();
+    ResultSet rs;
+    PreparedStatement pstmt;
+    
+    public Show_External_Marks() {
+        super("EXTERNAL MARKS");
+        initComponents();
+        jTable1.setRowHeight(35);
+    }
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        semester = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        batch = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        subcode = new javax.swing.JComboBox<>();
+        btnback = new javax.swing.JButton();
+        btnshow = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true), "EXTERNAL MARKS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Times New Roman", 0, 20))); // NOI18N
+        jPanel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("SEMESTER");
+
+        semester.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        semester.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select semester number", "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th" }));
+        semester.setPreferredSize(new java.awt.Dimension(6, 30));
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("BATCH");
+
+        batch.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        batch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select batch", "2020-2022", "2021-2023", "2022-2024", "2023-2025", "2024-2026", "2025-2027", "2026-2028", "2027-2029", "2028-2030", "2029-2031", "2030-2032", "2031-2033", "2032-2034" }));
+        batch.setPreferredSize(new java.awt.Dimension(6, 30));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("SUBJECT CODE");
+
+        subcode.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        subcode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select subject code" }));
+        subcode.setPreferredSize(new java.awt.Dimension(6, 30));
+        subcode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                subcodeMouseClicked(evt);
+            }
+        });
+
+        btnback.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnback.setText("GO BACK");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
+
+        btnshow.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnshow.setText("SHOW");
+        btnshow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnshowActionPerformed(evt);
+            }
+        });
+
+        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "QUESTION", "CO NUMBER"
+            }
+        ));
+        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 29, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(batch, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnshow)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(subcode, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(564, 564, 564)
+                        .addComponent(btnback)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(subcode, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(batch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addComponent(btnshow)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnback)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void subcodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subcodeMouseClicked
+        subcode.removeAllItems();
+        try
+        {
+            pstmt= conn.prepareStatement("select SUBJECT_CODE from SUBJECT where SEMESTER=? and BATCH=?");
+            pstmt.setString(1,semester.getSelectedItem().toString());
+            pstmt.setString(2,batch.getSelectedItem().toString());
+            rs= pstmt.executeQuery();
+            while(rs.next())
+            {
+                String code = rs.getString("SUBJECT_CODE");
+                subcode.addItem(code);
+            }
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }//GEN-LAST:event_subcodeMouseClicked
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        setVisible(false);
+        Home_Page ob=new Home_Page();
+        ob.setVisible(true);
+    }//GEN-LAST:event_btnbackActionPerformed
+
+    private void btnshowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnshowActionPerformed
+        try
+        {
+            pstmt= conn.prepareStatement("select USN as [USN], MARKS as [MARKS], PERCENTAGE as [PERCENTAGE] from EXTERNAL_MARKS where BATCH=? and SEMESTER=? and SUBJECT_CODE=?");
+            pstmt.setString(1,batch.getSelectedItem().toString());
+            pstmt.setString(2,semester.getSelectedItem().toString());
+            pstmt.setString(3,subcode.getSelectedItem().toString());
+            rs= pstmt.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }//GEN-LAST:event_btnshowActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Show_External_Marks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Show_External_Marks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Show_External_Marks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Show_External_Marks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Show_External_Marks().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> batch;
+    private javax.swing.JButton btnback;
+    private javax.swing.JButton btnshow;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> semester;
+    private javax.swing.JComboBox<String> subcode;
+    // End of variables declaration//GEN-END:variables
+}
